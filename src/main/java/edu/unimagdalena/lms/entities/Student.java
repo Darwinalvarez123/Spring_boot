@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.time.Instant;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "students")
@@ -16,7 +17,7 @@ import java.util.Set;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
     @Column(nullable = false, unique = true)
     private String email;
     @Column(name = "full_name", nullable = false)

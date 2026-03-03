@@ -3,7 +3,9 @@ package edu.unimagdalena.lms.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.rmi.server.UID;
 import java.time.Instant;
+import java.util.UUID;
 
 @Entity
 @Table(name = "enrollments")
@@ -15,7 +17,7 @@ import java.time.Instant;
 public class Enrollment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
     @Column(nullable = false)
     private String status;
     @Column(name = "enrolled_at", nullable = false)

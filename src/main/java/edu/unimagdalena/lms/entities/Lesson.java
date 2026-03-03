@@ -1,5 +1,7 @@
 package edu.unimagdalena.lms.entities;
 
+import java.util.UUID;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,7 +15,7 @@ import lombok.*;
 public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
 
     @Column(nullable = false)
     private String title;

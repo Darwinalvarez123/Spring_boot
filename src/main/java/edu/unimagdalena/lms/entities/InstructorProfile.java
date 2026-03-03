@@ -1,5 +1,7 @@
 package edu.unimagdalena.lms.entities;
 
+import java.util.UUID;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,7 +15,7 @@ import lombok.*;
 public class InstructorProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
     @Column(nullable = false)
     private String phone;
     @Column(nullable = false)
@@ -22,6 +24,4 @@ public class InstructorProfile {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "instructor_id", nullable = false, unique = true)
     private Instructor instructor;
-
-
 }

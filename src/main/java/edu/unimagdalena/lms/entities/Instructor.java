@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.time.Instant;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "instructors")
@@ -16,14 +17,14 @@ import java.util.Set;
 public class Instructor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
     @Column(nullable = false, unique = true)
     private String email;
     @Column(name = "full_name", nullable = false)
     private String fullName;
     @Column(name = "created_at")
     private Instant createdAt;
-    @Column(name = "update_at")
+    @Column(name = "updated_at")
     private Instant updatedAt;
     @OneToMany(mappedBy = "instructor")
     private Set<Course> courses;

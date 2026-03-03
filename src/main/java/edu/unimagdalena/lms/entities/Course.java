@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.time.Instant;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "courses")
@@ -16,7 +17,7 @@ import java.util.Set;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
     @Column(nullable = false)
     private String title;
     @Column(nullable = false)
@@ -25,7 +26,7 @@ public class Course {
     private boolean active;
     @Column(name = "created_at")
     private Instant createdAt;
-    @Column(name = "update_at")
+    @Column(name = "updated_at")
     private Instant updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
