@@ -91,7 +91,7 @@ public class LessonRepositoryTest extends AbstractRepositoryIT {
         assertThat(lessons1).hasSize(2);
         assertThat(lessons1).extracting(Lesson::getTitle).containsExactlyInAnyOrder("Matemáticas Básicas", "Matemáticas Avanzadas");
         assertThat(lessons2).hasSize(1);
-        assertThat(lessons2.get(0).getTitle()).isEqualTo("Programación en Java");
+        assertThat(lessons2.getFirst().getTitle()).isEqualTo("Programación en Java");
         assertThat(lessons3).isEmpty();
     }
 
