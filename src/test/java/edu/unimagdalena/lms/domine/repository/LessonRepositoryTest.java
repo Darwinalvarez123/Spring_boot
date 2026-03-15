@@ -4,9 +4,11 @@ package edu.unimagdalena.lms.domine.repository;
 import edu.unimagdalena.lms.entities.Course;
 import edu.unimagdalena.lms.entities.Instructor;
 import edu.unimagdalena.lms.entities.Lesson;
+import edu.unimagdalena.lms.entities.Student;
 import edu.unimagdalena.lms.repository.CourseRepository;
 import edu.unimagdalena.lms.repository.InstructorRepository;
 import edu.unimagdalena.lms.repository.LessonRepository;
+import edu.unimagdalena.lms.repository.StudentRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class LessonRepositoryTest extends AbstractRepositoryIT {
     private CourseRepository courseRepository;
     @Autowired
     private InstructorRepository instructorRepository;
+    @Autowired
+    private StudentRepository studentRepository;
 
     @Test
     @DisplayName("Agregar una lesson")
@@ -53,7 +57,6 @@ public class LessonRepositoryTest extends AbstractRepositoryIT {
     void shouldFindByCourseIdOrderByOrderIndexAsc() {
         //Given
         Instructor instructor = instructorRepository.save(Instructor.builder().fullName("instructor!").email("instructor1@gmail.com").build());
-
         Course course = courseRepository.save(Course.builder().title("Matemáticas").instructor(instructor).status("true").build());
         lessonRepository.save(Lesson.builder().title("Ecuaciones").orderIndex(3).course(course).build());
         lessonRepository.save(Lesson.builder().title("Numeros").orderIndex(1).course(course).build());
@@ -91,5 +94,7 @@ public class LessonRepositoryTest extends AbstractRepositoryIT {
         assertThat(lessons2.get(0).getTitle()).isEqualTo("Programación en Java");
         assertThat(lessons3).isEmpty();
     }
+
+
 
 }
