@@ -35,7 +35,7 @@ public class StudentRepositoryTest extends AbstractRepositoryIT {
     @DisplayName("Debe encontrar los email si existe")
     void shouldFindByEmail() {
         //Given
-        Student student = studentRepository.save(Student.builder().fullName("student").email("student1@gmail.com").build());
+        studentRepository.save(Student.builder().fullName("student").email("student1@gmail.com").build());
 
         //When
         Optional<Student> student1 = studentRepository.findByEmail("student1@gmail.com");
