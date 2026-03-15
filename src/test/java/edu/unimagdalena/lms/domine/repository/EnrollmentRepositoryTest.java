@@ -37,13 +37,7 @@ public class EnrollmentRepositoryTest extends AbstractRepositoryIT {
     void shouldFindByStudentId() {
         // Given
         Student student = studentRepository.save(Student.builder().fullName("Juan").email("juan@email.com").build());
-  @BeforeEach
-    void setUp() {
-        enrollmentRepository.deleteAll();
-        studentRepository.deleteAll();
-        courseRepository.deleteAll();
-        instructorRepository.deleteAll();
-    }
+
         Instructor instructor1 = instructorRepository.save(Instructor.builder().fullName("Profesor Matematicas").email("mate@email.com").build());
         Course course1 = courseRepository.save(Course.builder().title("Matematicas").instructor(instructor1).active(true).status("ACTIVE").build());
 
