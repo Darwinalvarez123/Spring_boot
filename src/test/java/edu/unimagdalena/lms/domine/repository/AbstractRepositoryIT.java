@@ -17,7 +17,7 @@ import org.testcontainers.postgresql.PostgreSQLContainer;
 @DataJpaTest
 @Testcontainers
 @ActiveProfiles("test")
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)  // Esto fuerza el reinicio del contexto
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)  
 public abstract class AbstractRepositoryIT {
     @Container
     @ServiceConnection
