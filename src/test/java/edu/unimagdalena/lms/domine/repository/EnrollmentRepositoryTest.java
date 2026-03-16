@@ -8,7 +8,6 @@ import edu.unimagdalena.lms.repository.CourseRepository;
 import edu.unimagdalena.lms.repository.EnrollmentRepository;
 import edu.unimagdalena.lms.repository.InstructorRepository;
 import edu.unimagdalena.lms.repository.StudentRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
