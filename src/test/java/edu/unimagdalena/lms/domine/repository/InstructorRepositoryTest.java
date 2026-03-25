@@ -1,7 +1,6 @@
 package edu.unimagdalena.lms.domine.repository;
 
-import edu.unimagdalena.lms.entities.Instructor;
-import edu.unimagdalena.lms.repository.InstructorRepository;
+import edu.unimagdalena.lms.domine.entities.Instructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,7 @@
 package edu.unimagdalena.lms.domine.repository;
 
-import edu.unimagdalena.lms.entities.Instructor;
-import edu.unimagdalena.lms.entities.InstructorProfile;
-import edu.unimagdalena.lms.repository.InstructorProfileRepository;
-import edu.unimagdalena.lms.repository.InstructorRepository;
+import edu.unimagdalena.lms.domine.entities.Instructor;
+import edu.unimagdalena.lms.domine.entities.InstructorProfile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
 
 public class InstructorProfileRepositoryTest extends AbstractRepositoryIT {
 

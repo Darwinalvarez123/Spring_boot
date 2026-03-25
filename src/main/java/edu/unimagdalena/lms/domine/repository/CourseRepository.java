@@ -1,6 +1,6 @@
-package edu.unimagdalena.lms.repository;
+package edu.unimagdalena.lms.domine.repository;
 
-import edu.unimagdalena.lms.entities.Course;
+import edu.unimagdalena.lms.domine.entities.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

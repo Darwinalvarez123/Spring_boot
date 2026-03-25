@@ -1,27 +1,28 @@
-package edu.unimagdalena.lms.entities;
+package edu.unimagdalena.lms.domine.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.rmi.server.UID;
 import java.time.Instant;
 import java.util.UUID;
 
 @Entity
-@Table(name = "enrollments")
+@Table(name = "assessments")
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
 @Builder
-public class Enrollment {
+@Getter
+@Setter
+public class Assessment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @Column(nullable = false)
-    private String status;
-    @Column(name = "enrolled_at", nullable = false)
-    private Instant enrolledAt;
+    private String type;
+    @Column(nullable = false)
+    private int score;
+    @Column(name = "taken_at", nullable = false)
+    private Instant takenAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
@@ -30,4 +31,10 @@ public class Enrollment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     private Course course;
+
+
 }
+
+
+
+

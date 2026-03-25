@@ -1,11 +1,11 @@
-package edu.unimagdalena.lms.repository;
+package edu.unimagdalena.lms.domine.repository;
 
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.unimagdalena.lms.entities.InstructorProfile;
+import edu.unimagdalena.lms.domine.entities.InstructorProfile;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 

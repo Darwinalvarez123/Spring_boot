@@ -1,11 +1,7 @@
 package edu.unimagdalena.lms.domine.repository;
 
 
-import edu.unimagdalena.lms.LmsApplication;
-import edu.unimagdalena.lms.repository.*;
-
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
-import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;

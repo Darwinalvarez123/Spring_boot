@@ -1,13 +1,9 @@
 package edu.unimagdalena.lms.domine.repository;
 
-import edu.unimagdalena.lms.entities.Assessment;
-import edu.unimagdalena.lms.entities.Course;
-import edu.unimagdalena.lms.entities.Instructor;
-import edu.unimagdalena.lms.entities.Student;
-import edu.unimagdalena.lms.repository.AssessmentRepository;
-import edu.unimagdalena.lms.repository.CourseRepository;
-import edu.unimagdalena.lms.repository.InstructorRepository;
-import edu.unimagdalena.lms.repository.StudentRepository;
+import edu.unimagdalena.lms.domine.entities.Assessment;
+import edu.unimagdalena.lms.domine.entities.Course;
+import edu.unimagdalena.lms.domine.entities.Instructor;
+import edu.unimagdalena.lms.domine.entities.Student;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
