@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ServiceStudent {
-    StudentDto.StudentResponse create(StudentDto.StudentCreateRequest req);
-    StudentDto.StudentResponse get(StudentDto.StudentIdRequest req);
-    StudentDto.StudentResponse update(StudentDto.StudentUpdateRequest req);
-    List<StudentDto.StudentResponse> getAll();
+    StudentResponse create(StudentCreateRequest req);
+    StudentResponse get(StudentIdRequest req);
+    StudentResponse update(StudentUpdateRequest req);
+    List<StudentResponse> getAll();
     void delete(UUID id);
 }
