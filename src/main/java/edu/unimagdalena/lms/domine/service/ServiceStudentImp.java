@@ -14,42 +14,56 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class ServiceStudentImp implements ServiceStudent{
-    private  final StudentRepository repo;
+
+public class ServiceStudentImp implements ServiceStudent {
+
+    private final StudentRepository repo;
+    private final StudentMapper mapper;
 
     @Override
     public StudentDto.StudentResponse create(StudentDto.StudentCreateRequest req) {
 
-        if (repo.findByEmail(req.email()).isPresent())
-        {
-            throw new RuntimeException("Email already exists");
-        }
-        Student student = repo.save(StudentMapper.toEntity(req));
-        return StudentMapper.toResponse(student);
+        repo.findByEmail(req.email()).ifPresent(s -> {
+            throw new RuntimeException("Email: " + req.email() + " already exists");
+        });
+
+        // Mapeo -> Guardado -> Mapeo de respuesta
+        Student student = mapper.toEntity(req);
+        Student saved = repo.save(student);
+        return mapper.toResponse(saved);
     }
 
     @Override
     public StudentDto.StudentResponse get(StudentDto.StudentIdRequest req) {
-        var studentOptional = repo.findById(req.id());
-        if (studentOptional.isEmpty()) {
-            throw new RuntimeException("Student not found");
-        }
-        Student student = studentOptional.get();
-        return StudentMapper.toResponse(student);
+        // Uso de Optional para evitar el if-else manual
+        return repo.findById(req.id())
+                .map(mapper::toResponse) // Equivale a s -> mapper.toResponse(s)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
     }
 
     @Override
     public StudentDto.StudentResponse update(StudentDto.StudentUpdateRequest req) {
-        return null;
+        return repo.findById(req.id())
+                .map(existing -> {
+                    // Actualizamos los datos
+                    Student updated = mapper.toEntity(req);
+                    return mapper.toResponse(repo.save(updated));
+                })
+                .orElseThrow(() -> new RuntimeException("Student not found to update"));
     }
 
     @Override
     public List<StudentDto.StudentResponse> getAll() {
-        return List.of();
+        return repo.findAll().stream()
+                .map(mapper::toResponse)
+                .toList();
     }
 
     @Override
     public void delete(UUID id) {
-
+        if (!repo.existsById(id)) {
+            throw new RuntimeException("Student not found to delete");
+        }
+        repo.deleteById(id);
     }
 }

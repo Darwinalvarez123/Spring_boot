@@ -1,21 +1,24 @@
-import java.time.Instant;
+package edu.unimagdalena.lms.domine.service.mapper;
 
-import edu.unimagdalena.lms.api.dto.InstructorDto;
+import edu.unimagdalena.lms.api.dto.InstructorDto.InstructorCreateRequest;
+import edu.unimagdalena.lms.api.dto.InstructorDto.InstructorResponse;
+import edu.unimagdalena.lms.api.dto.InstructorDto.InstructorUpdateRequest;
 import edu.unimagdalena.lms.domine.entities.Instructor;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-public class InstructorMapper {
-    public static Instructor toEntity(InstructorDto.InstructorCreateReques req) {
-        return Instructor.builder().email(req.email()).fullName(req.name()).created_at(Instant.now()).build();
+@Mapper(componentModel = "spring")
+public interface InstructorMapper {
 
-    }
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "fullName", source = "name")
+    @Mapping(target = "createdAt", expression = "java(java.time.Instant.now())")
+    Instructor toEntity(InstructorCreateRequest req);
 
-    public static Instructor toEntity(InstructorDto.InstructorUpdateReques req) {
+    @Mapping(target = "fullName", source = "name")
+    @Mapping(target = "updatedAt", expression = "java(java.time.Instant.now())")
+    Instructor toEntity(InstructorUpdateRequest req);
 
-        return Instructor.builder().id(req.id()).email(req.email()).fullName(req.name()).updated_at(Instant.now())
-                .build();
-    }
-
-    public static Instructor toResponse(Instructor entity) {
-        return new InstructorDto.InstructorResponse(entity.getId(), entity.getFullName(), entity.getEmail());
-    }
+    @Mapping(target = "name", source = "fullName")
+    InstructorResponse toResponse(Instructor entity);
 }
